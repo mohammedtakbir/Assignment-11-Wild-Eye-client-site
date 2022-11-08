@@ -19,6 +19,7 @@ const SignUp = () => {
             .then(res => {
                 toast.success('Sign up successfully!');
                 form.reset();
+                setError('');
                 console.log(res.user);
             })
             .catch(err => {

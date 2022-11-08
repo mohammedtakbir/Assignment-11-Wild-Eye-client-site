@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
+    const { userLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
+    const handleUserLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        userLogin(email, password)
+            .then(res => {
+                toast.success('Log in successfully!');
+                form.reset();
+                setError('');
+                console.log(res.user);
+            })
+            .catch(err => {
+                setError(err.message)
+                console.error(err)
+            })
+    }
     return (
         <div>
             <div className='flex justify-center my-[150px]'>
                 <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-                    <form className="space-y-6" action="#">
+                    <form className="space-y-6" onSubmit={handleUserLogin}>
                         <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">Log in</h5>
                         <div>
                             <label
@@ -34,6 +57,9 @@ const Login = () => {
                                 required
                             />
                         </div>
+                        <p className='text-red-500 !mt-3'>
+                            <small>{error}</small>
+                        </p>
                         <div className="flex items-start">
                             <div className="flex items-start">
                                 <div className="flex items-center h-5">
