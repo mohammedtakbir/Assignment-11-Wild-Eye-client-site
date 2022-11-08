@@ -12,18 +12,16 @@ const Header = () => {
                     fluid={true}
                     rounded={true}
                 >
-                    <Navbar.Brand>
-                        <Link to='/' className='flex'>
-                            <img
-                                src={logo}
-                                className="mr-3 h-6 sm:h-9"
-                                alt="Wild Eye Logo"
-                            />
-                            <span className="self-center whitespace-nowrap text-[22px] font-semibold dark:text-white">
-                                Wild <span className='font-light'>Eye</span>
-                            </span>
-                        </Link>
-                    </Navbar.Brand>
+                    <Link className='flex' to='/'>
+                        <img
+                            src={logo}
+                            className="mr-3 h-6 sm:h-9"
+                            alt="Wild Eye Logo"
+                        />
+                        <span className="self-center whitespace-nowrap text-[22px] font-semibold dark:text-white">
+                            Wild <span className='font-light'>Eye</span>
+                        </span>
+                    </Link>
                     <Navbar.Toggle />
                     <Navbar.Collapse>
                         <Link className='text-base text-gray-700' to='/home'>Home</Link>
@@ -32,7 +30,9 @@ const Header = () => {
                         <Link className='text-base text-gray-700' to='/signup'>Sign Up</Link>
                         <Link className='text-base text-gray-700' to='/logout'>My Reviews</Link>
                         <Link className='text-base text-gray-700' to='/logout'>Add Service</Link>
-                        <button className='text-base text-gray-700' to='/logout'>Log Out</button>
+                        <Link>
+                            <button className='text-base text-gray-700' to='/logout'>Log Out</button>
+                        </Link>
                     </Navbar.Collapse>
                 </Navbar>
             </div>
