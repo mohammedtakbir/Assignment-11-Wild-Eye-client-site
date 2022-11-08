@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
+    const { userSignup } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
+    const handleUserSignup = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        userSignup(email, password)
+            .then(res => {
+                toast.success('Sign up successfully!');
+                form.reset();
+                console.log(res.user);
+            })
+            .catch(err => {
+                setError(err.message)
+                console.error(err)
+            })
+    }
+
     return (
         <div className='flex justify-center my-[150px]'>
             <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-                <form className="space-y-6" action="#">
+                <form className="space-y-6" onSubmit={handleUserSignup}>
                     <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">Sign Up</h5>
                     <div>
                         <label
@@ -44,6 +69,9 @@ const SignUp = () => {
                             required
                         />
                     </div>
+                    <p className='text-red-500 !mt-3'>
+                        <small>{error}</small>
+                    </p>
                     <div className="flex items-start">
                         <div className="flex items-start">
                             <div className="flex items-center h-5">
@@ -52,11 +80,12 @@ const SignUp = () => {
                                     type="checkbox"
                                     value=""
                                     className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                    required />
+                                // required
+                                />
                             </div>
                             <label
                                 htmlFor="remember"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Accept Terms & Conditions.</label>
                         </div>
                     </div>
                     <button
