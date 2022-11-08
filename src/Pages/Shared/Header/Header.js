@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Navbar } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
@@ -8,7 +8,7 @@ const Header = () => {
         <div className='bg-gray-200'>
             <div className='container mx-auto'>
                 <Navbar
-                    className='bg-gray-200 py-4'
+                    className='!py-4 !bg-gray-200'
                     fluid={true}
                     rounded={true}
                 >

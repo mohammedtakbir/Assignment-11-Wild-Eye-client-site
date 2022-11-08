@@ -11,7 +11,7 @@ const Banner = () => {
                 </div>
                 <div className='absolute text-sm text-white top-[15%] left-[11%]'>
                     <h1 className='text-5xl font-semibold mb-10'>Join my Wild Eye <br /> Photography Course!</h1>
-                    <h3 className='mb-7'>In this course we will cover: </h3>
+                    <h3 className='mb-7'>In these course i will cover: </h3>
                     <ul className='mb-6'>
                         <li className='mb-2'>Equipment for wildlife photography plus recommendations for your budget</li>
                         <li className='mb-2'>Getting out of auto & mastering your camera settings</li>
