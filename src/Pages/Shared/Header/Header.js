@@ -1,9 +1,13 @@
 import { Navbar } from 'flowbite-react';
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user)
     return (
         <div className='bg-gray-200'>
             <div className='container mx-auto'>
