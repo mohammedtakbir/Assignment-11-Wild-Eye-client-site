@@ -13,6 +13,13 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        if (password.length < 8) {
+            setError('Password should be at least 8 character.');
+            return;
+        }else{
+            setError('');
+        }
+
         userLogin(email, password)
             .then(res => {
                 toast.success('Log in successfully!');

@@ -1,13 +1,22 @@
 import { Navbar } from 'flowbite-react';
 import React from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
-    console.log(user)
+    const { user, userSignOut } = useContext(AuthContext);
+
+    //* user Sign Out
+    const handleSignOut = () => {
+        userSignOut()
+            .then(() => {
+                toast.success('Sign out successfully')
+            })
+            .catch(err => console.log(err))
+    };
     return (
         <div className='bg-gray-200'>
             <div className='container mx-auto'>
@@ -30,13 +39,20 @@ const Header = () => {
                     <Navbar.Collapse>
                         <Link className='text-base text-gray-700' to='/home'>Home</Link>
                         <Link className='text-base text-gray-700' to='/services'>Services</Link>
-                        <Link className='text-base text-gray-700' to='/login'>Login</Link>
-                        <Link className='text-base text-gray-700' to='/signup'>Sign Up</Link>
-                        <Link className='text-base text-gray-700' to='/logout'>My Reviews</Link>
-                        <Link className='text-base text-gray-700' to='/logout'>Add Service</Link>
-                        <Link>
-                            <button className='text-base text-gray-700' to='/logout'>Log Out</button>
-                        </Link>
+                        <Link className='text-base text-gray-700' to='/blogs'>Blogs</Link>
+                        {user ?
+                            <>
+                                <Link className='text-base text-gray-700' to='/logout'>My Reviews</Link>
+                                <Link className='text-base text-gray-700' to='/logout'>Add Service</Link>
+                                <Link>
+                                    <button onClick={handleSignOut} className='text-base text-gray-700' to='/logout'>Log Out</button>
+                                </Link>
+                            </> :
+                            <>
+                                <Link className='text-base text-gray-700' to='/login'>Login</Link>
+                                <Link className='text-base text-gray-700' to='/signup'>Sign Up</Link>
+                            </>
+                        }
                     </Navbar.Collapse>
                 </Navbar>
             </div>
