@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServicesCard from '../../Shared/Services/ServicesCard';
 import Banner from '../Banner/Banner';
 
@@ -29,6 +30,11 @@ const Home = () => {
                             service={service}
                         />)
                     }
+                </div>
+                <div className='text-center mt-10'>
+                    <Link to='/services'>
+                        <button className='className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300"'>See All Courses</button>
+                    </Link>
                 </div>
             </div>
         </>
