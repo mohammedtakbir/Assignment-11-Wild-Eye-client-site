@@ -43,7 +43,7 @@ const Header = () => {
                         {user ?
                             <>
                                 <Link className='text-base text-gray-700' to='/myReviews'>My Reviews</Link>
-                                <Link className='text-base text-gray-700' to='/logout'>Add Service</Link>
+                                <Link className='text-base text-gray-700' to='/addService'>Add Service</Link>
                                 <Link>
                                     <button onClick={handleSignOut} className='text-base text-gray-700' to='/logout'>Log Out</button>
                                 </Link>

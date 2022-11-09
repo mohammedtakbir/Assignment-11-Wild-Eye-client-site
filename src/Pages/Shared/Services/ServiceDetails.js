@@ -24,7 +24,7 @@ const ServiceDetails = () => {
         <div className='max-w-4xl mx-auto my-10'>
             {/* Description */}
             <div>
-                <img className='w-full rounded-md' src={image} alt="" />
+                <img className='w-full h-[600px] rounded-md' src={image} alt="" />
                 <h2 className='text-xl font-semibold mt-4 mb-5'>{service.name}</h2>
                 <div>
                     <h3 className='font-semibold text-2xl mb-2'>Description</h3>

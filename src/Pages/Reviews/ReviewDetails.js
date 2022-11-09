@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReviewDetails = ({ rvw }) => {
     const { review, userName, userImg } = rvw;
-    
+
     return (
         <>
             <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
@@ -12,7 +12,6 @@ const ReviewDetails = ({ rvw }) => {
                             {userImg ?
                                 <img src={userImg} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" /> :
                                 <img src='https://previews.123rf.com/images/remodesigner/remodesigner1906/remodesigner190600575/131360456-portrait-of-a-young-man-with-beard-and-hair-style-male-avatar-vector-illustration-.jpg' alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
-
                             }
                         </div>
                         <div>
