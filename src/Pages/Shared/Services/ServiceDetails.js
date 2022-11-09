@@ -12,6 +12,8 @@ const ServiceDetails = () => {
     const { _id, description, image, others_info } = service;
     const [reviews, setReviews] = useState([]);
 
+    console.log(reviews)
+
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
@@ -40,8 +42,17 @@ const ServiceDetails = () => {
                 <div>
                     <h3>
                         <span className='text-[#ffd700] text-3xl'><FaStar className='inline' /> </span>
-                        <span className='text-2xl font-semibold'>{others_info?.rating.number} course rating • {others_info?.rating?.ratings} ratings</span>
+                        <span className='text-2xl font-semibold mr-2'>
+                            {!reviews.length ? '0'
+                                : others_info?.rating.number
+                            }</span>
+                        <span className='text-2xl font-semibold'>
+                            course rating •
+                            {!reviews.length ? '0' :
+                                others_info?.rating?.ratings
+                            } ratings</span>
                     </h3>
+                    <h3 className={!reviews.length ? 'my-10 text-3xl text-center font-medium text-gray-500' : 'hidden'}>{!reviews.length ? 'No reviews were added' : ''}</h3>
                 </div>
                 <div className='grid md:grid-cols-2'>
                     {

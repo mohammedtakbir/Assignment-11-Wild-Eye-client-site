@@ -40,7 +40,6 @@ const Reviews = () => {
                     toast.success('Review Added!');
                     form.reset();
                 }
-                console.log(data)
             })
     };
 
