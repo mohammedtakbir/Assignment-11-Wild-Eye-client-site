@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
     const { userLogin, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleUserLogin = (e) => {
         e.preventDefault();
@@ -16,12 +19,13 @@ const Login = () => {
         if (password.length < 8) {
             setError('Password should be at least 8 character.');
             return;
-        }else{
+        } else {
             setError('');
         }
 
         userLogin(email, password)
             .then(res => {
+                navigate(from);
                 toast.success('Log in successfully!');
                 form.reset();
                 setError('');
@@ -36,6 +40,7 @@ const Login = () => {
     const googleLogIn = () => {
         googleSignIn()
             .then(res => {
+                navigate(from);
                 toast.success('Login successfully!');
                 console.log(res.user);
             })
