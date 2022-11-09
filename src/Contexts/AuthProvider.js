@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
     };
     //* sign out
     const userSignOut = () => {
+        localStorage.removeItem('wildEye-token');
         return signOut(auth);
     }
 

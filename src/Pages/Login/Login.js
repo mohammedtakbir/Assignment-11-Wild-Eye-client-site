@@ -21,11 +21,26 @@ const Login = () => {
             return;
         } else {
             setError('');
-        }
+        };
 
         userLogin(email, password)
             .then(res => {
-                navigate(from);
+                const currentUser = {
+                    email: res.user?.email
+                }
+                fetch(`http://localhost:5000/jwt`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('wildEye-token', data.token)
+                        console.log(data);
+                        navigate(from);
+                    })
                 toast.success('Log in successfully!');
                 form.reset();
                 setError('');
