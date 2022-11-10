@@ -42,6 +42,7 @@ const AddService = () => {
             .then(res => res.json())
             .then(data => {
                 if(data.acknowledged){
+                    form.reset();
                     toast.success('Successfully added a service!')
                 }
             })
