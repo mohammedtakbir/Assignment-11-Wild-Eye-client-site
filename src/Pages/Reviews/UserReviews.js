@@ -19,7 +19,7 @@ const MyReviews = () => {
             }
         })
             .then(res => {
-                if(res.status === 401 || res.status === 403){
+                if (res.status === 401 || res.status === 403) {
                     return userSignOut();
                 }
                 return res.json()
@@ -48,36 +48,15 @@ const MyReviews = () => {
 
     return (
         <div className='container mx-auto my-10'>
-            
-            <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" className="py-3 px-6">
-                                Service Name
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Review
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Delete Review
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Edit Review
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <h3 className={!userReviews.length ? 'my-10 text-center text-2xl font-medium' : 'hidden'}>{!userReviews.length ? 'No reviews were added' : ''}</h3>
-                        {
-                            userReviews.map(userReview => <UserReviewsInTable
-                                key={userReview._id}
-                                userReview={userReview}
-                                handleDeleteReview={handleDeleteReview}
-                            />)
-                        }
-                    </tbody>
-                </table>
+            <h3 className={!userReviews.length ? 'my-10 text-center text-2xl font-medium' : 'hidden'}>{!userReviews.length ? 'No reviews were added' : ''}</h3>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
+                {
+                    userReviews.map(userReview => <UserReviewsInTable
+                        key={userReview._id}
+                        userReview={userReview}
+                        handleDeleteReview={handleDeleteReview}
+                    />)
+                }
             </div>
         </div>
     );

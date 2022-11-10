@@ -10,6 +10,7 @@ import Services from "../Pages/Shared/Services/Services";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "../routers/PrivateRoute";
 import AddService from "../Pages/Shared/Services/AddService";
+import EditReview from "../Pages/Reviews/EditReview";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
             {
                 path: '/addService',
                 element: <PrivateRoute><AddService /></PrivateRoute>
+            },
+            {
+                path: '/editReview/:id',
+                element: <EditReview />
             }
         ]
     }
