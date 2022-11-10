@@ -20,12 +20,15 @@ const MyReviews = () => {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 403) {
-                    return userSignOut();
+                    return userSignOut()
                 }
                 return res.json()
             })
             .then(data => {
                 setUserReviews(data)
+            })
+            .catch(err => {
+                return userSignOut()
             })
     }, [user?.email, userSignOut]);
 
