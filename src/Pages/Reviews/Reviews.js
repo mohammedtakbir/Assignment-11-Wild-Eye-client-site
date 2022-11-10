@@ -45,7 +45,7 @@ const Reviews = () => {
             })
     };
 
-    const test = () => {
+    const navigator = () => {
         navigate(`/service-details/${_id}`)
     }
 
@@ -105,7 +105,7 @@ const Reviews = () => {
                             className="p-4 rounded-md resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
                         <>
                             <button
-                                onClick={test}
+                                onClick={navigator}
                                 type="submit"
                                 className="w-full py-3 mt-8 mb-5 font-semibold rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300">Submit</button>
                         </>
