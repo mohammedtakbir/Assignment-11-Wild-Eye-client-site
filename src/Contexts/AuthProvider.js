@@ -15,14 +15,17 @@ const AuthProvider = ({ children }) => {
 
     //* create an user
     const userSignup = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
     //* login an user
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
     //* sign in with google
     const googleSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     };
     //* sign out
@@ -30,11 +33,7 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem('wildEye-token');
         return signOut(auth);
     }
-
-
-
-
-
+    
 
     //* Get the currently signed-in user
     useEffect(() => {

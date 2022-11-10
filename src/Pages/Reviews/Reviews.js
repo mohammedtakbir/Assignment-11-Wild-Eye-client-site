@@ -3,8 +3,10 @@ import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useSetTitle } from '../../hooks/useSetTitle';
 
 const Reviews = () => {
+    useSetTitle('Write-Reviews');
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
@@ -27,7 +29,7 @@ const Reviews = () => {
             userImg
         };
 
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://wild-eye.vercel.app/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

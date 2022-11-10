@@ -1,7 +1,9 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import { useSetTitle } from '../../../hooks/useSetTitle';
 
 const AddService = () => {
+    useSetTitle('Add Service');
     const handleAddService = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -30,7 +32,7 @@ const AddService = () => {
             },
             price: price
         };
-        fetch('http://localhost:5000/services', {
+        fetch('https://wild-eye.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

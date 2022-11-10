@@ -4,14 +4,16 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useSetTitle } from '../../hooks/useSetTitle';
 import UserReviewsInTable from './UserReviewsInTable';
 
 const MyReviews = () => {
+    useSetTitle('My Reviews');
     const { user, userSignOut } = useContext(AuthContext);
     const [userReviews, setUserReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        fetch(`https://wild-eye.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('wildEye-token')}`
             }
@@ -20,8 +22,8 @@ const MyReviews = () => {
                 if(res.status === 401 || res.status === 403){
                     return userSignOut();
                 }
-                return res.json()}
-                )
+                return res.json()
+            })
             .then(data => {
                 setUserReviews(data)
             })
@@ -30,7 +32,7 @@ const MyReviews = () => {
     const handleDeleteReview = (_id) => {
         const proceed = window.confirm('Are you sure you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${_id}`, {
+            fetch(`https://wild-eye.vercel.app/reviews/${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -3,10 +3,12 @@ import { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import { useSetTitle } from '../../../hooks/useSetTitle';
 import ReviewDetails from '../../Reviews/ReviewDetails';
 import ServiceDescription from './ServiceDescription';
 
 const ServiceDetails = () => {
+    useSetTitle('Service-Details')
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     const { _id, description, image, others_info } = service;
@@ -15,7 +17,7 @@ const ServiceDetails = () => {
     console.log(reviews)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://wild-eye.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [_id])

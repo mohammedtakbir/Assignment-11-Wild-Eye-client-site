@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                loader: () => fetch('http://localhost:5000/services'),
+                loader: () => fetch('https://wild-eye.vercel.app/services'),
                 element: <Services />
             },
             {
@@ -43,12 +43,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/service-details/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/service-details/${params.id}`),
+                loader: ({ params }) => fetch(`https://wild-eye.vercel.app/service-details/${params.id}`),
                 element: <ServiceDetails />
             },
             {
                 path: '/reviews/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/service-details/${params.id}`),
+                loader: ({ params }) => fetch(`https://wild-eye.vercel.app/service-details/${params.id}`),
                 element: <PrivateRoute><Reviews /></PrivateRoute>
             },
             {

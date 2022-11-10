@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { setAuthToken } from '../../APIs/Authenticate';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useSetTitle } from '../../hooks/useSetTitle';
 
 const SignUp = () => {
+    useSetTitle('Sign Up');
     const { userSignup, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const handleUserSignup = (e) => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -22,6 +25,7 @@ const SignUp = () => {
 
         userSignup(email, password)
             .then(res => {
+                setAuthToken(res);
                 toast.success('Sign up successfully!');
                 form.reset();
                 setError('');
@@ -36,6 +40,7 @@ const SignUp = () => {
     const googleSignUp = () => {
         googleSignIn()
             .then(res => {
+                setAuthToken(res);
                 toast.success('Sign up successfully!');
                 console.log(res.user);
             })
@@ -95,7 +100,7 @@ const SignUp = () => {
                                     type="checkbox"
                                     value=""
                                     className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                // required
+                                    required
                                 />
                             </div>
                             <label

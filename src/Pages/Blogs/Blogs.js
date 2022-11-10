@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSetTitle } from '../../hooks/useSetTitle';
 
 const Blogs = () => {
+    useSetTitle('Blogs');
     return (
         <>
             <section className="dark:bg-gray-800 dark:text-gray-100">

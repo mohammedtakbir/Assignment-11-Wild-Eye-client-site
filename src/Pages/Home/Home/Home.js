@@ -2,14 +2,16 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSetTitle } from '../../../hooks/useSetTitle';
 import ServicesCard from '../../Shared/Services/ServicesCard';
 import Banner from '../Banner/Banner';
 
 const Home = () => {
+    useSetTitle('Home');
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services/home')
+        fetch('https://wild-eye.vercel.app/services/home')
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);

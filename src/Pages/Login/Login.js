@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { setAuthToken } from '../../APIs/Authenticate';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useSetTitle } from '../../hooks/useSetTitle';
 
 const Login = () => {
+    useSetTitle('Log In');
     const { userLogin, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -28,7 +31,7 @@ const Login = () => {
                 const currentUser = {
                     email: res.user?.email
                 }
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://wild-eye.vercel.app/jwt`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -37,9 +40,8 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        localStorage.setItem('wildEye-token', data.token)
-                        console.log(data);
                         navigate(from);
+                        localStorage.setItem('wildEye-token', data.token)
                     })
                 toast.success('Log in successfully!');
                 form.reset();
@@ -55,6 +57,7 @@ const Login = () => {
     const googleLogIn = () => {
         googleSignIn()
             .then(res => {
+                setAuthToken(res);
                 navigate(from);
                 toast.success('Login successfully!');
                 console.log(res.user);
