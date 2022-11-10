@@ -35,7 +35,6 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                loader: () => fetch('https://wild-eye.vercel.app/services'),
                 element: <Services />
             },
             {

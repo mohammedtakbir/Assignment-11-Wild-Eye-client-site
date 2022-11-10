@@ -19,14 +19,16 @@ const Reviews = () => {
         const userName = form.name.value;
         const email = user?.email || 'unregister';
         const userImg = user?.photoURL;
-
+        const date = new Date().toString().slice(0, 21);
+        
         const userReview = {
             serviceId: _id,
             courseName: name,
             userName,
             email,
             review,
-            userImg
+            userImg,
+            date
         };
 
         fetch(`https://wild-eye.vercel.app/reviews`, {

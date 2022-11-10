@@ -14,8 +14,6 @@ const ServiceDetails = () => {
     const { _id, description, image, others_info } = service;
     const [reviews, setReviews] = useState([]);
 
-    console.log(reviews)
-
     useEffect(() => {
         fetch(`https://wild-eye.vercel.app/reviews/${_id}`)
             .then(res => res.json())
