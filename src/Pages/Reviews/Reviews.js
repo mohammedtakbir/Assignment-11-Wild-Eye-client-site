@@ -39,20 +39,16 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    navigate(`/service-details/${_id}`);
                     toast.success('Review Added!');
                     form.reset();
                 }
             })
     };
-
-    const navigator = () => {
-        navigate(`/service-details/${_id}`)
-    }
-
     return (
-        <div className='flex justify-center my-[150px]'>
+        <div className='flex justify-center md:my-[150px] sm:my-[100px] my-[60px]'>
 
-            <div className="flex flex-col w-[450px] !p-6 rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100 shadow-lg border">
+            <div className="flex flex-col sm:w-[450px] w-full sm:mx-0 mx-2 !p-6 rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100 shadow-lg border">
                 <div className="flex flex-col items-center w-full">
                     <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
                     <div className="flex flex-col items-center py-6 space-y-3">

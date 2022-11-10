@@ -15,7 +15,7 @@ const EditReview = () => {
             return;
         }
 
-        fetch(`http://localhost:5000/reviews/${id.id}`, {
+        fetch(`https://wild-eye.vercel.app/reviews/${id.id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -31,7 +31,7 @@ const EditReview = () => {
             })
     }
     return (
-        <div className='w-[500px] mx-auto my-24 shadow-lg p-5 border rounded-md'>
+        <div className='sm:w-[500px] w-full sm:mx-auto mx-2 md:my-24 my-14 shadow-lg p-5 border rounded-md'>
             <div className='mb-4'>
                 <label for="message" class="block mb-4 text-xl font-medium text-gray-900 dark:text-gray-400">Edit Review</label>
                 <textarea onBlur={(e) => setReview(e.target.value)}

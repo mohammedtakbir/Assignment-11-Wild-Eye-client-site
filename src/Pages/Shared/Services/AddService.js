@@ -48,8 +48,8 @@ const AddService = () => {
     };
 
     return (
-        <div className='max-w-5xl mx-auto py-5'>
-            <h2 className='text-3xl text-center font-semibold my-5'>Add A New Service!</h2>
+        <div className='max-w-5xl lg:mx-auto py-5 mx-2'>
+            <h2 className='text-3xl text-center font-sm sm:my-5 my-3 mb-9'>Add A New Service!</h2>
             <form onSubmit={handleAddService}>
                 <div class="relative z-0 mb-6 w-full group">
                     <input

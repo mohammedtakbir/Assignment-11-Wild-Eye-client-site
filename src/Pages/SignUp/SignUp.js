@@ -48,8 +48,8 @@ const SignUp = () => {
     };
 
     return (
-        <div className='flex justify-center my-[150px]'>
-            <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className='flex justify-center md:my-[150px] my-[70px]'>
+            <div className="p-4 w-full sm:mx-0 mx-2 sm:max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <form className="space-y-6" onSubmit={handleUserSignup}>
                     <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">Sign Up</h5>
                     <div>

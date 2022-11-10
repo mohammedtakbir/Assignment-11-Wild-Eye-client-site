@@ -6,7 +6,7 @@ const UserReviewsInTable = ({ userReview, handleDeleteReview }) => {
 
     return (
         <>
-            <div className="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 relative">
+            <div className="p-6 sm:mx-0 mx-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 relative">
                 <Link href="#">
                     <h5 className="mb-2 text-2xl font-sm tracking-tight text-gray-900 dark:text-white">{courseName}</h5>
                 </Link>

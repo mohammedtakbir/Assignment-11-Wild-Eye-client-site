@@ -37,20 +37,20 @@ const Header = () => {
                     </Link>
                     <Navbar.Toggle />
                     <Navbar.Collapse>
-                        <Link className='text-base text-gray-700' to='/home'>Home</Link>
-                        <Link className='text-base text-gray-700' to='/services'>Services</Link>
-                        <Link className='text-base text-gray-700' to='/blogs'>Blogs</Link>
+                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/home'>Home</Link>
+                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/services'>Services</Link>
+                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/blogs'>Blogs</Link>
                         {user ?
                             <>
-                                <Link className='text-base text-gray-700' to='/myReviews'>My Reviews</Link>
-                                <Link className='text-base text-gray-700' to='/addService'>Add Service</Link>
+                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/myReviews'>My Reviews</Link>
+                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/addService'>Add Service</Link>
                                 <Link>
                                     <button onClick={handleSignOut} className='text-base text-gray-700' to='/logout'>Log Out</button>
                                 </Link>
                             </> :
                             <>
-                                <Link className='text-base text-gray-700' to='/login'>Login</Link>
-                                <Link className='text-base text-gray-700' to='/signup'>Sign Up</Link>
+                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/login'>Login</Link>
+                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/signup'>Sign Up</Link>
                             </>
                         }
                     </Navbar.Collapse>

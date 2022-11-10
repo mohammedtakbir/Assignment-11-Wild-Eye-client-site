@@ -23,8 +23,8 @@ const Home = () => {
             <Banner />
             <Section1 />
             <div className='bg-gray-50'>
-                <div className='container mx-auto pb-14 pt-10'>
-                    <div className='text-center mb-10'>
+                <div className='container mx-auto sm:pb-14 pb-10 sm:pt-16 pt-10'>
+                    <div className='text-center sm:mb-10 mb-7'>
                         <h2 className='text-3xl mb-4'>Take your Wildlife Photography to the Next Level!</h2>
                         <p>Discover the world of remote and camera trap wildlife photography…</p>
                     </div>

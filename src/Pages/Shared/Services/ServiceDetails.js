@@ -23,10 +23,10 @@ const ServiceDetails = () => {
     }, [_id])
 
     return (
-        <div className='max-w-4xl mx-auto my-10'>
+        <div className='max-w-4xl lg:mx-auto mx-2 my-10'>
             {/* Description */}
             <div>
-                <img className='w-full h-[600px] rounded-md' src={image} alt="" />
+                <img className='w-full lg:h-[600px] md:h-[500px] sm:h-[400px] h-[280px] rounded-md' src={image} alt="" />
                 <h2 className='text-xl font-semibold mt-4 mb-5'>{service.name}</h2>
                 <div>
                     <h3 className='font-semibold text-2xl mb-2'>Description</h3>
@@ -44,12 +44,12 @@ const ServiceDetails = () => {
                 <div>
                     <h3>
                         <span className='text-[#ffd700] text-3xl'><FaStar className='inline' /> </span>
-                        <span className='text-2xl font-semibold mr-2'>
+                        <span className='text-2xl font-medium mr-2'>
                             {!reviews.length ? '0'
                                 : others_info?.rating.number
-                            }</span>
-                        <span className='text-2xl font-semibold'>
-                            course rating •
+                            } course rating</span>
+                        <span className='text-2xl font-medium sm:inline block sm:ml-0 ml-8 sm:mt-0 mt-1'>
+                            • 
                             {!reviews.length ? '0' :
                                 others_info?.rating?.ratings
                             } ratings</span>
