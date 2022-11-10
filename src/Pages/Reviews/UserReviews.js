@@ -49,7 +49,7 @@ const MyReviews = () => {
     return (
         <div className='container mx-auto my-10'>
             <h3 className={!userReviews.length ? 'my-10 text-center text-2xl font-medium' : 'hidden'}>{!userReviews.length ? 'No reviews were added' : ''}</h3>
-            <h2 className='text-center mb-6 text-3xl font-medium'>All My Reviews</h2>
+            <h2 className='text-center mb-6 text-3xl font-medium'>{!userReviews.length ? '' : 'All My Reviews'}</h2>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 {
                     userReviews.map(userReview => <UserReviewsInTable
