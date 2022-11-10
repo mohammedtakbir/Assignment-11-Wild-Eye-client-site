@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const UserReviewsInTable = ({ userReview, handleDeleteReview }) => {
     const { courseName, review, _id } = userReview;
-    console.log(userReview)
     return (
         <>
             <div className="p-6 sm:mx-0 mx-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 relative">
