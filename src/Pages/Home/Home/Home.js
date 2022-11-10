@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useSetTitle } from '../../../hooks/useSetTitle';
 import ServicesCard from '../../Shared/Services/ServicesCard';
 import Banner from '../Banner/Banner';
+import About from '../Sections/About';
+import Section1 from '../Sections/Section1';
 
 const Home = () => {
     useSetTitle('Home');
@@ -19,25 +21,29 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <div className='container mx-auto py-14'>
-                <div className='text-center mb-10'>
-                    <h2 className='text-3xl mb-4'>Take your Wildlife Photography to the Next Level!</h2>
-                    <p>Discover the world of remote and camera trap wildlife photography…</p>
-                </div>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10'>
-                    {
-                        services.map(service => <ServicesCard
-                            key={service._id}
-                            service={service}
-                        />)
-                    }
-                </div>
-                <div className='text-center mt-10'>
-                    <Link to='/services'>
-                        <button className='className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300"'>See All Courses</button>
-                    </Link>
+            <Section1 />
+            <div className='bg-gray-50'>
+                <div className='container mx-auto pb-14 pt-10'>
+                    <div className='text-center mb-10'>
+                        <h2 className='text-3xl mb-4'>Take your Wildlife Photography to the Next Level!</h2>
+                        <p>Discover the world of remote and camera trap wildlife photography…</p>
+                    </div>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10'>
+                        {
+                            services.map(service => <ServicesCard
+                                key={service._id}
+                                service={service}
+                            />)
+                        }
+                    </div>
+                    <div className='text-center mt-10'>
+                        <Link to='/services'>
+                            <button className='className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300"'>See All Courses</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
+            <About />
         </>
     );
 };
