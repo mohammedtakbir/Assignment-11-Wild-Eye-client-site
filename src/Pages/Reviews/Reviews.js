@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
@@ -11,8 +12,10 @@ const Reviews = () => {
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     const { _id, name } = service;
+    const [loading, setLoading] = useState(false);
 
     const handleReviewSubmit = (e) => {
+        setLoading(true);
         e.preventDefault();
         const form = e.target;
         const review = form.review.value;
@@ -20,7 +23,7 @@ const Reviews = () => {
         const email = user?.email || 'unregister';
         const userImg = user?.photoURL;
         const date = new Date().toString().slice(0, 21);
-        
+
         const userReview = {
             serviceId: _id,
             courseName: name,
@@ -41,10 +44,14 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    setLoading(true);
                     navigate(`/service-details/${_id}`);
                     toast.success('Review Added!');
                     form.reset();
                 }
+            })
+            .catch(err => {
+                setLoading(false);
             })
     };
     return (
@@ -105,7 +112,7 @@ const Reviews = () => {
                             <button
                                 onClick={navigator}
                                 type="submit"
-                                className="w-full py-3 mt-8 mb-5 font-semibold rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300">Submit</button>
+                                className="w-full py-3 mt-8 mb-5 font-semibold rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300">{loading ? 'Loading...' : 'Submit'}</button>
                         </>
                     </form>
                 </div>

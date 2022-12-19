@@ -4,7 +4,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div>
+        <>
             <div className='relative'>
                 <div className='bg-img'>
                     <img className='md:h-[100vh] h-[800px] md:object-none object-cover w-full' src="https://i1.adis.ws/i/canon/canon-get-inspired-wildlife-canon-eos-90d-1-1920x1080-tint-7ed5cbba-b8ce-11e9-8076-f8bc126f6b0a?qlt=80&w=1920&sm=aspect&aspect=16:9&scaleFit=poi&poi=0.5629043579101562,0.22110892401801216,0.125,0.2222222222222222&fmt=jpg&fmt.options=interlaced&bg=rgb(255,255,255)" alt="" />
@@ -29,7 +29,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

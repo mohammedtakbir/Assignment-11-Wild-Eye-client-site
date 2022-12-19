@@ -7,13 +7,14 @@ const EditReview = () => {
     const id = useParams();
     const [review, setReview] = useState('');
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleEditReview = (id) => {
-
-        if(review === ''){
+        if (review === '') {
             toast.error('You have to add review.')
             return;
         }
+        setLoading(true);
 
         fetch(`https://wild-eye.vercel.app/reviews/${id.id}`, {
             method: 'PATCH',
@@ -25,9 +26,13 @@ const EditReview = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
+                    setLoading(false);
                     navigate('/myReviews')
                     toast.success('Review Updated!')
                 }
+            })
+            .catch(err => {
+                setLoading(false);
             })
     }
     return (
@@ -42,7 +47,7 @@ const EditReview = () => {
                     placeholder="Edit your Review here...">
                 </textarea>
             </div>
-            <button onClick={() => handleEditReview(id)} type="submit" className='text-white py-1 px-3 bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300'>Update</button>
+            <button onClick={() => handleEditReview(id)} type="submit" className='text-white py-1 px-3 bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300'>{loading ? 'Updating...' : 'Update'}</button>
         </div>
     );
 };

@@ -1,10 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { useSetTitle } from '../../../hooks/useSetTitle';
 
 const AddService = () => {
     useSetTitle('Add Service');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
     const handleAddService = (e) => {
+        setLoading(true);
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -41,10 +47,15 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.acknowledged){
+                if (data.acknowledged) {
+                    setLoading(false);
+                    navigate('/services')
                     form.reset();
                     toast.success('Successfully added a service!')
                 }
+            })
+            .catch(err => {
+                setLoading(false);
             })
     };
 
@@ -113,7 +124,9 @@ const AddService = () => {
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">price</label>
                     </div>
                 </div>
-                <button type="submit" className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Add Service</button>
+                <button type="submit" className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                    {loading ? 'Loading...' : 'Add Service'}
+                </button>
             </form>
 
         </div>

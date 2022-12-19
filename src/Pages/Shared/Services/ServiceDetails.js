@@ -2,22 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import Loading from '../../../components/Loading';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useSetTitle } from '../../../hooks/useSetTitle';
 import ReviewDetails from '../../Reviews/ReviewDetails';
 import ServiceDescription from './ServiceDescription';
 
 const ServiceDetails = () => {
-    useSetTitle('Service-Details')
+    useSetTitle('Service-Details');
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     const { _id, description, image, others_info } = service;
     const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://wild-eye.vercel.app/reviews/${_id}`)
             .then(res => res.json())
-            .then(data => setReviews(data))
+            .then(data => {
+                setReviews(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setLoading(false)
+            })
     }, [_id])
 
     return (
@@ -47,21 +56,27 @@ const ServiceDetails = () => {
                                 : others_info?.rating.number
                             } course rating</span>
                         <span className='text-2xl font-medium sm:inline block sm:ml-0 ml-8 sm:mt-0 mt-1'>
-                            • 
+                            •
                             {!reviews.length ? '0' :
                                 others_info?.rating?.ratings
                             } ratings</span>
                     </h3>
-                    <h3 className={!reviews.length ? 'my-10 text-3xl text-center font-medium text-gray-500' : 'hidden'}>{!reviews.length ? 'No reviews were added' : ''}</h3>
+                    {loading ? '' :
+                        <h3 className={!reviews.length ? 'my-10 text-3xl text-center font-medium text-gray-500' : 'hidden'}>{!reviews.length ? 'No reviews were added' : ''}</h3>}
                 </div>
-                <div className='grid md:grid-cols-2'>
-                    {
-                        reviews.map(rvw => <ReviewDetails
-                            key={rvw._id}
-                            rvw={rvw}
-                        />)
-                    }
-                </div>
+                {
+                    loading ?
+                        <Loading />
+                        :
+                        <div className='grid md:grid-cols-2'>
+                            {
+                                reviews.map(rvw => <ReviewDetails
+                                    key={rvw._id}
+                                    rvw={rvw}
+                                />)
+                            }
+                        </div>
+                }
                 <div className='mt-5 text-center'>
                     <Link to={`/reviews/${_id}`} className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300">
                         {user ?

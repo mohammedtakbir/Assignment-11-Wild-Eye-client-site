@@ -15,7 +15,10 @@ const Services = () => {
                 if (services.length > 0) {
                     setLoading(false);
                 }
-            });
+            })
+            .catch(err => {
+                setLoading(false);
+            })
     }, [services.length]);
     return (
         <>

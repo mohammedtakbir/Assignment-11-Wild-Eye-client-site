@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { useSetTitle } from '../../hooks/useSetTitle';
 import UserReviewsInTable from './UserReviewsInTable';
@@ -11,8 +12,10 @@ const MyReviews = () => {
     useSetTitle('My Reviews');
     const { user, userSignOut } = useContext(AuthContext);
     const [userReviews, setUserReviews] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://wild-eye.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('wildEye-token')}`
@@ -25,9 +28,11 @@ const MyReviews = () => {
                 return res.json()
             })
             .then(data => {
-                setUserReviews(data)
+                setUserReviews(data);
+                setLoading(false);
             })
             .catch(err => {
+                setLoading(false);
                 return userSignOut()
             })
     }, [user?.email, userSignOut]);
@@ -51,7 +56,8 @@ const MyReviews = () => {
 
     return (
         <div className='container mx-auto my-10'>
-            <h3 className={!userReviews.length ? 'my-10 text-center text-2xl font-medium' : 'hidden'}>{!userReviews.length ? 'No reviews were added' : ''}</h3>
+            {loading ? <Loading /> :
+                <h3 className={!userReviews.length ? 'my-10 text-center text-2xl font-medium' : 'hidden'}>{!userReviews.length ? 'No reviews were added' : ''}</h3>}
             <h2 className='text-center mb-6 text-3xl font-medium'>{!userReviews.length ? '' : 'All My Reviews'}</h2>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 {
