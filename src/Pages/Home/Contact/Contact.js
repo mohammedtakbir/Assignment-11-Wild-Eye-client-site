@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
-import { FaMobileAlt, FaMapMarkerAlt } from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
 import emailjs from '@emailjs/browser';
 import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 const Contact = () => {
+    const [loading, setLoading] = useState(false);
     const form = useRef();
+
     const sendEmail = (e) => {
+        setLoading(true);
         e.preventDefault();
         const name = e.target.user_name.value;
         if (name === '') {
@@ -21,9 +23,10 @@ const Contact = () => {
         )
             .then((result) => {
                 e.target.reset();
+                setLoading(false);
                 toast.success('Message sent successfully!')
-                console.log(result.text);
             }, (error) => {
+                setLoading(false);
                 console.log(error.text);
             });
     };
@@ -95,7 +98,7 @@ const Contact = () => {
                                 <button
                                     type='submit'
                                     className='sm:px-5 px-4 sm:py-[10px] py-[8px] border-gray-700 border-2 rounded-3xl hover:bg-gray-700 hover:text-white duration-300 mt-7'>
-                                    Send Message
+                                    {loading ? 'Sending' : 'Send Message'}
                                 </button>
                             </form>
 
