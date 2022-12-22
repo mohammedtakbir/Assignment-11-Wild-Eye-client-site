@@ -50,7 +50,7 @@ const Section1 = () => {
                             </svg>
                         </div>
                         <div className="max-w-xl mb-6">
-                            <h2 className="max-w-lg mb-6 font-sans text-3xl font-sm tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+                            <h2 className="max-w-lg mb-6 font-sans sm:text-3xl text-2xl font-sm tracking-tight text-gray-900 sm:leading-none">
                                 Learn Wildlife Photography!
                                 <br className="hidden md:block" />
                                 your next{' '}

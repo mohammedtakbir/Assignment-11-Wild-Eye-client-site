@@ -6,6 +6,7 @@ import Loading from '../../../components/Loading';
 import { useSetTitle } from '../../../hooks/useSetTitle';
 import ServicesCard from '../../Shared/Services/ServicesCard';
 import Banner from '../Banner/Banner';
+import Contact from '../Contact/Contact';
 import About from '../Sections/About';
 import Section1 from '../Sections/Section1';
 
@@ -37,7 +38,7 @@ const Home = () => {
                 <div className='bg-gray-50'>
                     <div className='container mx-auto sm:pb-14 pb-10 sm:pt-16 pt-10'>
                         <div className='text-center sm:mb-10 mb-7'>
-                            <h2 className='text-3xl mb-4'>Take your Wildlife Photography to the Next Level!</h2>
+                            <h2 className='sm:text-3xl text-2xl mb-4'>Take your Wildlife Photography to the Next Level!</h2>
                             <p>Discover the world of remote and camera trap wildlife photography…</p>
                         </div>
                         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10'>
@@ -56,6 +57,7 @@ const Home = () => {
                     </div>
                 </div>}
             <About />
+            <Contact />
         </>
     );
 };
