@@ -19,7 +19,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        if (password.length < 8) {
+        if (password?.length < 8) {
             setError('Password should be at least 8 character.');
             return;
         } else {
@@ -46,11 +46,9 @@ const Login = () => {
                 toast.success('Log in successfully!');
                 form.reset();
                 setError('');
-                console.log(res.user);
             })
             .catch(err => {
                 setError(err.message)
-                console.error(err)
             })
     };
     //* google login
@@ -60,7 +58,6 @@ const Login = () => {
                 setAuthToken(res);
                 navigate(from);
                 toast.success('Login successfully!');
-                console.log(res.user);
             })
             .catch(err => console.log(err))
     };

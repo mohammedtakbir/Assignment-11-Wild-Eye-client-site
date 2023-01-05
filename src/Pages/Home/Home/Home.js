@@ -9,6 +9,8 @@ import Banner from '../Banner/Banner';
 import Contact from '../Contact/Contact';
 import About from '../Sections/About';
 import Section1 from '../Sections/Section1';
+import Lottie from "lottie-react";
+import testAnimation from "../../../assets/38047-splash-screen-of-programming-hero-app.json";
 
 const Home = () => {
     useSetTitle('Home');
@@ -58,6 +60,11 @@ const Home = () => {
                 </div>}
             <About />
             <Contact />
+            <Lottie
+                className='w-[500px] mx-auto'
+                animationData={testAnimation}
+                loop={true}
+            />
         </>
     );
 };

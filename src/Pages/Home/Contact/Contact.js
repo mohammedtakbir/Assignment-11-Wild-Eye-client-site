@@ -27,7 +27,6 @@ const Contact = () => {
                 toast.success('Message sent successfully!')
             }, (error) => {
                 setLoading(false);
-                console.log(error.text);
             });
     };
 
@@ -43,7 +42,6 @@ const Contact = () => {
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade">
-
                         </iframe>
                     </div>
                     <div className='lg:flex md:mt-16 mt-10 gap-5 md:mx-0 mx-2'>
