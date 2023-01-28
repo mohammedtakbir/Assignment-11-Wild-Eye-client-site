@@ -18,8 +18,8 @@ const Header = () => {
             .catch(err => console.log(err))
     };
     return (
-        <div className='bg-gray-200'>
-            <div className='container mx-auto'>
+        <section className='bg-gray-200'>
+            <nav className='max-w-[1300px] mx-auto'>
                 <Navbar
                     className='!py-4 !bg-gray-200'
                     fluid={true}
@@ -40,6 +40,7 @@ const Header = () => {
                         <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/home'>Home</Link>
                         <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/services'>Services</Link>
                         <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/blogs'>Blogs</Link>
+                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to=''>Contact</Link>
                         {user ?
                             <>
                                 <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/myReviews'>My Reviews</Link>
@@ -55,8 +56,8 @@ const Header = () => {
                         }
                     </Navbar.Collapse>
                 </Navbar>
-            </div>
-        </div>
+            </nav>
+        </section>
     );
 };
 

@@ -9,8 +9,6 @@ import Banner from '../Banner/Banner';
 import Contact from '../Contact/Contact';
 import About from '../Sections/About';
 import Section1 from '../Sections/Section1';
-import Lottie from "lottie-react";
-import testAnimation from "../../../assets/38047-splash-screen-of-programming-hero-app.json";
 
 const Home = () => {
     useSetTitle('Home');
@@ -38,12 +36,12 @@ const Home = () => {
                 <Loading />
                 :
                 <div className='bg-gray-50'>
-                    <div className='container mx-auto sm:pb-14 pb-10 sm:pt-16 pt-10'>
+                    <div className='max-w-[1300px] mx-auto sm:pb-14 pb-10 sm:pt-16 pt-10'>
                         <div className='text-center sm:mb-10 mb-7'>
                             <h2 className='sm:text-3xl text-2xl mb-4'>Take your Wildlife Photography to the Next Level!</h2>
                             <p>Discover the world of remote and camera trap wildlife photography…</p>
                         </div>
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10'>
+                        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                             {
                                 services.map(service => <ServicesCard
                                     key={service._id}
@@ -60,11 +58,6 @@ const Home = () => {
                 </div>}
             <About />
             <Contact />
-            <Lottie
-                className='w-[500px] mx-auto'
-                animationData={testAnimation}
-                loop={true}
-            />
         </>
     );
 };
