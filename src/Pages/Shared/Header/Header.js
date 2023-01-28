@@ -2,7 +2,8 @@ import { Navbar } from 'flowbite-react';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import logo from '../../../assets/logo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
@@ -25,7 +26,7 @@ const Header = () => {
                     fluid={true}
                     rounded={true}
                 >
-                    <Link className='flex' to='/'>
+                    <NavLink className='flex' to='/'>
                         <img
                             src={logo}
                             className="mr-3 h-6 sm:h-9"
@@ -34,24 +35,33 @@ const Header = () => {
                         <span className="self-center whitespace-nowrap text-[22px] font-semibold dark:text-white">
                             Wild <span className='font-light'>Eye</span>
                         </span>
-                    </Link>
+                    </NavLink>
                     <Navbar.Toggle />
                     <Navbar.Collapse>
-                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/home'>Home</Link>
-                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/services'>Services</Link>
-                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/blogs'>Blogs</Link>
-                        <Link className='text-base text-gray-700 md:mb-0 mb-2' to=''>Contact</Link>
+                        <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/home'>Home</NavLink>
+                        <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/services'>Services</NavLink>
+                        <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/blogs'>Blogs</NavLink>
+                        <Link
+                            className='text-base text-gray-700 md:mb-0 mb-2 cursor-pointer'
+                            to="contact"
+                            spy={true}
+                            smooth={true}
+                            offset={20}
+                            duration={1000}
+                        >
+                            Contact
+                        </Link>
                         {user ?
                             <>
-                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/myReviews'>My Reviews</Link>
-                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/addService'>Add Service</Link>
-                                <Link>
+                                <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/myReviews'>My Reviews</NavLink>
+                                <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/addService'>Add Service</NavLink>
+                                <NavLink>
                                     <button onClick={handleSignOut} className='text-base text-gray-700' to='/logout'>Log Out</button>
-                                </Link>
+                                </NavLink>
                             </> :
                             <>
-                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/login'>Login</Link>
-                                <Link className='text-base text-gray-700 md:mb-0 mb-2' to='/signup'>Sign Up</Link>
+                                <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/login'>Login</NavLink>
+                                <NavLink className='text-base text-gray-700 md:mb-0 mb-2' to='/signup'>Sign Up</NavLink>
                             </>
                         }
                     </Navbar.Collapse>
